@@ -4,16 +4,18 @@
 // 00x00000
 
 public class Task3 {
-    
+
     Integer n = 8;
     int[][] board = new int[n][n];
+
     public static void main(String[] args) {
         System.out.println("Ферзи, которые не бьют друг друга, представлены на доске:");
         Task3 chessboard = new Task3();
         chessboard.placeQueen(0, 0);
         chessboard.printBoard();
     }
-    public void printBoard(){
+
+    public void printBoard() {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 System.out.print(board[i][j] + " ");
@@ -21,13 +23,13 @@ public class Task3 {
             System.out.println();
         }
     }
+
     public boolean placeQueen(int row, int col) {
         if (col >= n) {
             return true;
         }
         for (int i = 0; i < n; i++) {
-            if (
-                unbroken(i, col)) {
+            if (unbroken(i, col)) {
                 board[i][col] = 1;
                 if (placeQueen(0, col + 1)) {
                     return true;
@@ -37,6 +39,7 @@ public class Task3 {
         }
         return false;
     }
+
     public boolean unbroken(int row, int col) {
         for (int i = 0; i < n; i++) {
             if (board[row][i] == 1 || board[i][col] == 1) {
